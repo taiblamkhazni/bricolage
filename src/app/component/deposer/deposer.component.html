@@ -1,0 +1,73 @@
+<br>
+<div class="container">
+        <form (ngSubmit)="deposerBricole()">
+                <div class="form-row" >
+                  <div class="form-group col-md-3">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" name="title" [(ngModel)]="bricolage.title" id="inputAddress2" placeholder="Title">
+                    </div>
+                  <div class="form-group col-md-4">
+                        <label for="inputState">Catégories</label>
+                        <select id="inputState" class="form-control" name="cat" [(ngModel)]="bricolage.cat">
+                          <option selected>Choose...</option>
+                          <option *ngFor="let bricolage of bricolecollection"   [value]="bricolage.cat.id">{{bricolage.cat.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                            <label for="inputState">Ville</label>
+                            <select id="inputState" class="form-control" name="ville"  [(ngModel)]="bricolage.ville">
+                              <option selected>Choose...</option>
+                              <option *ngFor="let bricolage of bricolecollection"  [value]="bricolage.ville.id">{{bricolage.ville.name}}</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                        <div class="form-group col-md-6">
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea name="description" [(ngModel)]="bricolage.description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                </div>
+                <div class="form-row">
+                        <div class="col-md-4">
+                            <mat-form-field style="padding-top: 20px;">
+                                    <input matInput placeholder="Prix" name="prix" [(ngModel)]="bricolage.prix" type="number" class="example-right-align">
+                                    <span matPrefix>$&nbsp;</span>
+                                    <span matSuffix>.00</span>
+                            </mat-form-field> 
+                        </div>   
+                        <div class="col-md-4">
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input mdbInputDirective type="email" name="email" [(ngModel)]="bricolage.email" class="form-control" id="form9" name="email">
+                                    <label for="form9">Type your e-mail</label>
+                                </div>
+                        </div>
+                </div>
+                <br>
+                <div class="form-row">
+                        <div class="form-group col-md-3">
+                                <label for="title">Telephone</label>
+                                <input type="text" class="form-control" name="tele" [(ngModel)]="bricolage.tele" id="inputAddress2" placeholder="Title">
+                        </div> 
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4" style="padding-top: 40px;">
+                                <!-- Default inline 1-->
+                            <div class="custom-control custom-radio custom-control-inline" *ngFor="let bricolage of bricolecollection">
+                              <input type="radio" class="custom-control-input" id="defaultInline1" name="type" ngModel [value]="bricolage.type" name="inlineDefaultRadiosExample" mdbInputDirective>
+                              <label class="custom-control-label" for="defaultInline1">{{bricolage.type}}</label>
+                            </div>
+                            
+                        </div>
+                </div>
+                <br>
+                <div class="from-row">
+                        <div class="form-group">
+                                <label for="exampleFormControlFile1">file input</label>
+                                <input type="file" name="photo" [(ngModel)]="bricolage.photo" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </form>
+</div>
+<br>

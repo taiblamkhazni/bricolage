@@ -1,0 +1,52 @@
+<div class="container" style="">
+  <div class="row" >
+      <div class="col-md-10">
+        <h1 align="center"  class="mt-5">Trouver la bonne affaire parmi annonces</h1>
+      </div>  
+  </div>
+    <br>
+  <div class="row" >
+    <div class="col-md-3">
+        <div class="md-form">
+            <input mdbInputDirective type="text" id="form1" class="form-control">
+            <label for="form1" class="">Que Rechercher vous!</label>
+          </div>
+    </div>
+    <div class="col-md-3">
+        <label for="inputState">Catégories</label>
+        <select id="inputState" class="form-control">
+          <option selected>Catégories</option>
+          <option *ngFor="let bricolage of bricolecollection" [value]="bricolage.cat.id">{{bricolage.cat.name}}</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="inputState">Ville</label>
+        <select id="inputState" class="form-control">
+          <option selected>Ville</option>
+          <option *ngFor="let bricolage of bricolecollection" [value]="bricolage.ville.id">{{bricolage.ville.name}}</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <a mdbBtn floating="true" size="lg" color="blue" mdbWavesEffect><mdb-icon icon="search"></mdb-icon></a>
+    </div>
+    
+  </div>
+  <br>
+  <div class="row" >
+    <div class="col-md-4">
+      <!-- Default inline 1-->
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" mdbInputDirective>
+    <label class="custom-control-label" for="defaultInline1">Offre</label>
+  </div>
+  
+  <!-- Default inline 2-->
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" mdbInputDirective>
+    <label class="custom-control-label" for="defaultInline2">Demande</label>
+  </div>
+    </div>
+  </div>
+  <br>
+  <hr >
+</div>

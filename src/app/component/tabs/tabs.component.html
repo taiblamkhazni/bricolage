@@ -1,0 +1,37 @@
+<div class="container">
+    <!--tabs-->
+    <mat-tab-group mat-stretch-tabs  class="example-stretched-tabs mat-elevation-z4">
+      <mat-tab label="All">
+        <br>
+        <div class="container">
+                <div class="row" style="margin-left: 10px;" *ngFor="let bricole of bricolecollection | paginate:{itemsPerPage:1,currentPage:p}">
+                    <div class="media">
+                        <img class="d-flex mr-3" src="{{bricole.photo}}" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{bricole.title}}</h5>
+                            {{bricole.description}}
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+               
+                <div class="row">
+                    <div class="col-md-3">
+        
+                    </div>
+                    <div class="col-md-6">
+                            <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                    </div>
+                    <div class="col-md-3">
+        
+                    </div>
+        
+                </div>
+               
+        </div>
+          <br>
+        </mat-tab>
+      <mat-tab label="Offres"><app-mesoffre></app-mesoffre></mat-tab>
+      <mat-tab label="Demandes"><app-mesdemande></app-mesdemande></mat-tab>
+    </mat-tab-group>
+  </div>
