@@ -8,19 +8,16 @@ import { MonserviceService } from 'src/app/services/monservice.service';
 })
 export class RechercherComponent implements OnInit {
   bricolecollection;
-  
   constructor(private monservice :MonserviceService) {
+   }
+ 
+  
+  ngOnInit() {
     this.monservice.getcollection().subscribe(
       bricolage=>{
         this.bricolecollection=bricolage;
       }
     )
-    
-   }
- 
-  
-  ngOnInit() {
-    
   }
   
 }

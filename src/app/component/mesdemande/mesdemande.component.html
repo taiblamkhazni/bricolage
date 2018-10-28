@@ -1,7 +1,7 @@
 <br>
 <div class="container">
         <div class="row" style="margin-left: 10px;" *ngFor="let bricole of bricolecollection">
-            <div class="media" *ngIf="bricole.type=='demande'">
+            <div class="media" *ngIf="bricole.type.name=='demande'">
                 <img class="d-flex mr-3" src="{{bricole.photo}}" alt="Generic placeholder image">
                 <div class="media-body">
                     <h5 class="mt-0">{{bricole.title}}</h5>
