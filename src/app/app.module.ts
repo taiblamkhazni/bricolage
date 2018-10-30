@@ -23,7 +23,6 @@ import { NavComponent } from './component/nav/nav.component';
 import { HomeComponent } from './component/home/home.component';
 import { OffreComponent } from './component/offre/offre.component';
 import { DemandeComponent } from './component/demande/demande.component';
-import { DeposerComponent } from './component/deposer/deposer.component';
 import { SlideComponent } from './component/slide/slide.component';
 import { RechercherComponent } from './component/rechercher/rechercher.component';
 import { AllComponent } from './component/all/all.component';
@@ -42,7 +41,6 @@ import { TabsComponent } from './component/tabs/tabs.component';
     NavComponent,
     OffreComponent,
     DemandeComponent,
-    DeposerComponent,
     SlideComponent,
     RechercherComponent,
     AllComponent,

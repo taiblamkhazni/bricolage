@@ -1,24 +1,105 @@
 <nav class="navbar navbar-expand-lg navbar-dark indigo">
-    <a class="navbar-brand" href="#"><img src="assets/Logo-bricolage.png" alt="Logo-bricolage" width="100px" height="60px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" routerLink="/"><img src="assets/Logo-bricolage.png" alt="Logo-bricolage" width="100px" height="60px"></a>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">Home
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >
+          <a class="nav-link" routerLink="/" >Home
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Offre" routerLinkActive="active">Offre</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="Offre" routerLinkActive="active">Offre</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Demande"  routerLinkActive="active" >demende</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="Demande"  routerLinkActive="active" >demende</a>
         </li>
       </ul>
-      <button mdbBtn type="button" color="default" mdbWavesEffect routerLink="/Deposer" routerLinkActive="active"><mdb-icon icon="edit" class="ml-1"> </mdb-icon> 
-        Déposer une annonce</button>
+      <!-- This is a button toggling the modal -->
+          <button mdbBtn class="uk-button uk-margin-small-right" mdbWavesEffect type="button" uk-toggle="target: #modal-example" style="
+          background-color: cadetblue;
+      "><mdb-icon icon="edit" class="ml-1"> </mdb-icon> 
+            Déposer une annonce</button>
+          <!-- This is the modal -->
+          <div id="modal-example" uk-modal>
+              <div class="uk-modal-dialog uk-modal-body">
+                  <h2 class="uk-modal-title">Déposer une annonce</h2>
+                  <br>
+                  <form (ngSubmit)="deposerBricole()">
+                    <div class="form-row" >
+                      <div class="form-group col-md-3">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" name="title" [(ngModel)]="bricolage.title" id="inputAddress2" placeholder="Title">
+                        </div>
+                      <div class="form-group col-md-4">
+                            <label for="inputState">Catégories</label>
+                            <select id="inputState" class="form-control" name="cat" [(ngModel)]="bricolage.cat">
+                              <option selected>Choose...</option>
+                              <option *ngFor="let bricolage of bricolecollection"   [value]="bricolage.cat.id">{{bricolage.cat.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="inputState">Ville</label>
+                                <select id="inputState" class="form-control" name="ville"  [(ngModel)]="bricolage.ville">
+                                  <option selected>Choose...</option>
+                                  <option *ngFor="let bricolage of bricolecollection"  [value]="bricolage.ville.id">{{bricolage.ville.name}}</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea name="description" [(ngModel)]="bricolage.description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                    </div>
+                    <div class="form-row">
+                            <div class="col-md-4">
+                                <mat-form-field style="padding-top: 20px;">
+                                        <input matInput placeholder="Prix" name="prix" [(ngModel)]="bricolage.prix" type="number" class="example-right-align">
+                                        <span matPrefix>$&nbsp;</span>
+                                        <span matSuffix>.00</span>
+                                </mat-form-field> 
+                            </div>   
+                            <div class="col-md-2"></div>
+                            <div class="col-md-6">
+                                    <div class="md-form">
+                                        <i class="fa fa-envelope prefix"></i>
+                                        <input mdbInputDirective type="email" name="email" [(ngModel)]="bricolage.email" class="form-control" id="form9" name="email">
+                                        <label for="form9">Type your e-mail</label>
+                                    </div>
+                            </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                            <div class="form-group col-md-3">
+                                    <label for="title">Telephone</label>
+                                    <input type="text" class="form-control" name="tele" [(ngModel)]="bricolage.tele" id="inputAddress2" placeholder="Title">
+                            </div> 
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4" style="padding-top: 40px;">
+                                
+                                <div class="form-check form-check-inline" *ngFor="let bricolage of bricolecollection">
+                                  <input class="form-check-input"  type="radio" name="inlineRadioOptions"  name="type" ngModel [value]="bricolage.type.id">
+                                  <label class="form-check-label" >{{bricolage.type.name}}</label>
+                                </div>
+                            </div>
+                    </div>
+                    <br>
+                    <div class="from-row">
+                            <div class="form-group">
+                                    <label for="exampleFormControlFile1">file input</label>
+                                    <input type="file" name="photo" [(ngModel)]="bricolage.photo" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                  </form>
+                  <br>
+
+                  <p class="uk-text-right">
+                      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                      <button class="uk-button uk-button-primary" type="button">Save</button>
+                  </p>
+              </div>
+          </div>
     </div>
   </nav>

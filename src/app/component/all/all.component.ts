@@ -9,14 +9,17 @@ import { MonserviceService } from 'src/app/services/monservice.service';
 export class AllComponent implements OnInit {
   bricolecollection;
   constructor(private monservice:MonserviceService) {
-    this.monservice.getcollection().subscribe(bricolage=>{
-      this.bricolecollection=bricolage;
-      }
-        )
+    
    }
 
   ngOnInit() {
-    
+    debugger;
+    this.monservice.getcollection().subscribe(bricolage=>{
+      this.bricolecollection=bricolage;
+      console.log(this.bricolecollection)
+      }
+        )
+        
   }
 
 

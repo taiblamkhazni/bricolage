@@ -5,7 +5,7 @@ export interface Bricolage{
     ville:{id:number,name:string};
     description:string;
     prix?:number;
-    type:string;
+    type:{id:number,name:string};
     email:string;
     photo?:string;
     tele:number;
